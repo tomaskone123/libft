@@ -35,7 +35,7 @@ SOURCES = \
 	ft_putnbr_fd.c \
 	ft_substr.c \
 	ft_calloc.c \
-
+	ft_split.c \
 
 
 MAKE = \

@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:03:24 by tomas             #+#    #+#             */
-/*   Updated: 2024/04/25 12:31:52 by tomas            ###   ########.fr       */
+/*   Updated: 2024/06/03 15:45:27 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ char *ft_itoa(int n)
 	str = (char *)malloc(length + 1);
 	if (str == NULL)
 		return (NULL);
+	if (n == -2147483648)
+	{
+		str = "-2147483648";
+		return (str);
+	}
 	if (n < 0)
 	{
 		*str = '-';
@@ -48,7 +53,7 @@ char *ft_itoa(int n)
 // 	int c;
 // 	char *s;
 
-// 	c = 54231;
+// 	c = -2147483648;
 // 	s = ft_itoa(c);
 // 	printf("%s\n", s);
 // 	return (0);
