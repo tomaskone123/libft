@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 19:15:48 by tomas             #+#    #+#             */
-/*   Updated: 2024/06/03 15:23:16 by tomas            ###   ########.fr       */
+/*   Updated: 2024/06/03 17:10:20 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,17 @@ int	wordscpy(char **result, char const *s, char c)
 			++s;
 		while (*s && *s != c)
 		{
+			// printf("%c, %d\n", *s, len);
 			++len;
 			++s;
 		}
 		if (len)
 		{
-			if (ar_mal(result, i, len + i))
+			// printf("%d\n", len);
+			if (ar_mal(result, i, len + 1))
 				return (1);
 			ft_strlcpy(result[i], s - len, len + 1);
+
 		}
 		i++;
 	}
@@ -66,7 +69,7 @@ size_t	count_words(char const *s, char c)
 			if (!state)
 			{
 				words++;
-				state = false;
+				state = true;
 			}
 			s++;
 		}
@@ -87,12 +90,13 @@ char	**ft_split(char const *s, char c)
 	// result[words] = '\0';
 	if (wordscpy(result, s, c))
 		return NULL;
+	// result[words] = NULL;
 	return (result);
 }
 
 // int main(void)
 // {
-// 	char *s = "   Hello World ! ";
+// 	char *s = "  tripouille  42  ";
 // 	char **v = ft_split(s, ' ');
 // 	while (*v)
 // 	{
