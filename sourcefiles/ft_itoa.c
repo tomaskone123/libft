@@ -6,43 +6,72 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:03:24 by tomas             #+#    #+#             */
-/*   Updated: 2024/06/03 15:45:27 by tomas            ###   ########.fr       */
+/*   Updated: 2024/06/04 16:12:11 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+#include <limits.h>
 #include <stdlib.h>
+
+int	digit_count(int n)
+{
+	int	i;
+
+	i = 0;
+	if (n < 0)
+	{
+		n = -n;
+		i++;
+	}
+	while (n)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
+}
+
+int	signcheck(int n)
+{
+	int	i;
+
+	if (n >= 0)
+		i = 0;
+	else
+	{
+		i = 1;
+		n = -n;
+	}
+	return (i);
+}
 
 char *ft_itoa(int n)
 {
-	int		length;
-	int		temp;
 	char	*str;
+	int		len;
+	int		i;
 
-	length = 1;
-	temp = n;
-	while (temp /= 10)
-		length++;
-	if (n < 0)
-		length++;
-	str = (char *)malloc(length + 1);
+	if (n == 0)
+		return(ft_strdup("0"));
+	if (n == INT_MIN)
+		return (ft_strdup("-2147483648"));
+	len = digit_count(n);
+	str = malloc((len + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
-	if (n == -2147483648)
-	{
-		str = "-2147483648";
-		return (str);
-	}
+	i = signcheck(n);
 	if (n < 0)
 	{
 		*str = '-';
 		n = -n;
 	}
-	str[length] = 0;
-	while ((length-- > 0) && (str[length] != '-'))
+	str[len] = '\0';
+	len--;
+	while (n && len >= i)
 	{
-		str[length] = n % 10 + '0';
+		str[len--] = n % 10 + '0';
 		n /= 10;
 	}
 	return (str);
@@ -52,9 +81,11 @@ char *ft_itoa(int n)
 // {
 // 	int c;
 // 	char *s;
+// 	// int	d;
 
-// 	c = -2147483648;
+// 	c = 0;
 // 	s = ft_itoa(c);
+// 	// d = digit_count(c);
 // 	printf("%s\n", s);
 // 	return (0);
 // 	free(s);
