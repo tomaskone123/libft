@@ -6,11 +6,12 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:03:24 by tomas             #+#    #+#             */
-/*   Updated: 2024/06/04 16:12:11 by tomas            ###   ########.fr       */
+/*   Updated: 2024/06/04 17:43:51 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 #include <stdio.h>
 #include <limits.h>
 #include <stdlib.h>
@@ -54,9 +55,9 @@ char *ft_itoa(int n)
 	int		i;
 
 	if (n == 0)
-		return(ft_strdup("0"));
+		return(ft_strdup("0"));//vratit ft !!!!!!!!!!
 	if (n == INT_MIN)
-		return (ft_strdup("-2147483648"));
+		return (ft_strdup("-2147483648"));//vratit ft !!!!!!!!!!
 	len = digit_count(n);
 	str = malloc((len + 1) * sizeof(char));
 	if (str == NULL)
@@ -77,16 +78,16 @@ char *ft_itoa(int n)
 	return (str);
 }
 
-// int main(void)
-// {
-// 	int c;
-// 	char *s;
-// 	// int	d;
+	// int main(void)
+	// {
+	// 	int c;
+	// 	char *s;
+	// 	// int	d;
 
-// 	c = 0;
-// 	s = ft_itoa(c);
-// 	// d = digit_count(c);
-// 	printf("%s\n", s);
-// 	return (0);
-// 	free(s);
-// }
+	// 	c = 0;
+	// 	s = ft_itoa(c);
+	// 	// d = digit_count(c);
+	// 	printf("%s\n", s);
+	// 	return (0);
+	// 	free(s);
+	// }

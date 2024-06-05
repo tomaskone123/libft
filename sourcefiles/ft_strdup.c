@@ -6,7 +6,7 @@
 /*   By: tomas <tomas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:11:55 by tomas             #+#    #+#             */
-/*   Updated: 2024/04/10 16:43:48 by tomas            ###   ########.fr       */
+/*   Updated: 2024/06/04 18:07:38 by tomas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,37 @@
 
 char *ft_strdup(const char *s)
 {
-	char *new;
-	char *cnew;
+	char	*new;
+	int		i;
+	int		len;
 
-	new = (char *)malloc(strlen(s) * (sizeof(char)));
+	len = ft_strlen(s);
+	i = 0;
+	// printf("%d\n", len);
+	new = malloc((len + 1) * (sizeof(char)));
 	if (new == NULL)
 		return NULL;
-	cnew = new;
-	while (*s)
+	while (s[i])
 	{
-		*new = *s;
-		new++;
-		s++;
+		new[i] = s[i];
+		i++;
 	}
-	return (cnew);
+	// printf("%ld\n", ft_strlen(new));
+	new[i] = '\0';
+	return (new);
 }
 
 // int main(void)
 // {
-// 	const char *s = "Hello world";
-// 	char *d = ft_strdup(s);
+// 	int i = 0;
+// 	const char *s = "123\0";
+// 	// char *d = ft_strdup(s);
+// 	while (s[i])
+// 	{
+// 		printf("%c\n", s[i]);
+// 		i++;
+// 	}
 
-// 	printf("%s\n", d);
+// 	// printf("%s\n", d);
 // 	return 0;
 // }
